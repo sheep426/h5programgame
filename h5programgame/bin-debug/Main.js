@@ -188,6 +188,16 @@ var Main = (function (_super) {
                 }
             }
         }
+        var data = RES.getRes("walk_json");
+        var txtr = RES.getRes("walk_png");
+        var mcFactory = new egret.MovieClipDataFactory(data, txtr);
+        var mc = new egret.MovieClip(mcFactory.generateMovieClipData("walking"));
+        this.addChild(mc);
+        mc.touchEnabled = true;
+        //mc.gotoAndPlay("walking");
+        mc.x = 256 - 65;
+        mc.y = 256 - 30;
+        mc.play(-1);
         var line = new egret.Shape();
         line.graphics.lineStyle(2, 0xffffff);
         line.graphics.moveTo(0, 0);

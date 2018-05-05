@@ -190,6 +190,19 @@ class Main extends eui.UILayer {
 
         }
 
+        let data = RES.getRes("walk_json");
+        let txtr = RES.getRes("walk_png");
+        let mcFactory:egret.MovieClipDataFactory = new egret.MovieClipDataFactory(data,txtr);
+        var mc:egret.MovieClip = new egret.MovieClip( mcFactory.generateMovieClipData( "walking" ) ); 
+        this.addChild(mc);
+        mc.touchEnabled = true;
+        //mc.gotoAndPlay("walking");
+        mc.x = 256 - 65;
+        mc.y = 256 - 30;
+        mc.play(-1);
+        
+
+
         let line = new egret.Shape();
         line.graphics.lineStyle(2, 0xffffff);
         line.graphics.moveTo(0, 0);
