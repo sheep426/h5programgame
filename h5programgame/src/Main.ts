@@ -168,8 +168,27 @@ class Main extends eui.UILayer {
             [1,0,0,0,0,1],
             [1,0,0,0,0,1],
             [1,1,1,1,1,1],
-
         ]
+        let counter:number = 0
+        for(let row=0;row<5;row++)
+        {
+            for (let col = 0;col<6;col++)
+            {
+                if (tileArray[row][col] == 1)
+                {
+                    tileBitnmapArray[counter] = this.createBitmapByName("tile_png");
+                    this.addChild(tileBitnmapArray[counter]);
+                    let x:number =  row*64;
+                    let y:number =  col*64;
+                    let isoX:number = 256 + x - y;
+                    let isoY:number = 256 + (x +y)/2;
+                    tileBitnmapArray[counter].x = isoX;
+                    tileBitnmapArray[counter].y = isoY;
+                    counter = counter + 1;
+                }
+            }
+
+        }
 
         let line = new egret.Shape();
         line.graphics.lineStyle(2, 0xffffff);

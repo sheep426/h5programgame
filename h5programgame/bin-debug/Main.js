@@ -164,6 +164,30 @@ var Main = (function (_super) {
         this.addChild(icon);
         icon.x = 26;
         icon.y = 33;
+        var tileBitnmapArray = [];
+        var tileArray = [
+            [1, 1, 1, 1, 1, 1],
+            [1, 0, 0, 0, 0, 1],
+            [1, 0, 0, 0, 0, 1],
+            [1, 0, 0, 0, 0, 1],
+            [1, 1, 1, 1, 1, 1],
+        ];
+        var counter = 0;
+        for (var row = 0; row < 5; row++) {
+            for (var col = 0; col < 6; col++) {
+                if (tileArray[row][col] == 1) {
+                    tileBitnmapArray[counter] = this.createBitmapByName("tile_png");
+                    this.addChild(tileBitnmapArray[counter]);
+                    var x = row * 64;
+                    var y = col * 64;
+                    var isoX = 256 + x - y;
+                    var isoY = 256 + (x + y) / 2;
+                    tileBitnmapArray[counter].x = isoX;
+                    tileBitnmapArray[counter].y = isoY;
+                    counter = counter + 1;
+                }
+            }
+        }
         var line = new egret.Shape();
         line.graphics.lineStyle(2, 0xffffff);
         line.graphics.moveTo(0, 0);
